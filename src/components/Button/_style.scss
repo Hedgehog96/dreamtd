@@ -1,0 +1,68 @@
+.dreamtd-btn {
+  position: relative;
+  display: inline-block;
+  font-weight: $btn-font-weight;
+  line-height: $btn-line-height;
+  color: $body-color;
+  white-space: nowrap;
+  text-align: center;
+  vertical-align: middle;
+  background-image: none;
+  outline: none;
+  border: $btn-border-width solid transparent;
+  box-shadow: $btn-box-shadow;
+  cursor: pointer;
+  transition: $btn-transition;
+  @include button-size($btn-padding-y, $btn-padding-x, $btn-font-size, $border-radius);
+
+  &.disabled,
+  &[disabled] {
+    cursor: not-allowed;
+    opacity: $btn-disabled-opacity;
+    box-shadow: none;
+    > * {
+      pointer-events: none;
+    }
+  }
+}
+
+.dreamtd-btn-lg {
+  @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $btn-font-size-lg, $border-radius-lg)
+}
+
+.dreamtd-btn-sm {
+  @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $border-radius-sm)
+}
+
+.dreamtd-btn-primary {
+  @include button-type($white, $primary, $primary)
+}
+
+.dreamtd-btn-danger {
+  @include button-type($white, $danger, $danger)
+}
+
+.dreamtd-btn-default {
+  @include button-type($body-color, $white, $gray-400, $primary, $white, $primary)
+}
+
+.dreamtd-btn-link {
+  font-weight: $font-weight-normal;
+  color: $btn-link-color;
+  text-decoration: $link-decoration;
+  box-shadow: none;
+
+  &:hover {
+    color: $btn-link-hover-color;
+    text-decoration: $link-hover-decoration;
+  }
+
+  // &:focus {
+  //   text-decoration: $link-hover-decoration;
+  // }
+
+  &.disabled {
+    color: $btn-link-disabled-color;
+    pointer-events: none;
+  }
+}
