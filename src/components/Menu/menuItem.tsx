@@ -3,16 +3,16 @@
  * @Author: Pokkio
  * @Date: 2021-04-20 21:31:23
  * @LastEditors: Pokkio
- * @LastEditTime: 2021-04-21 22:52:25
+ * @LastEditTime: 2021-04-26 21:18:35
  */
 import React, { useContext } from 'react'
 import classnames from 'classnames'
 
 import { MenuContext } from './menu'
 
-interface IMenuItemProps {
+export interface IMenuItemProps {
   className?: string
-  index: number
+  index?: string
   disabled?: boolean
   style?: React.CSSProperties
 }
@@ -30,7 +30,7 @@ const MenuItem: React.FC<IMenuItemProps> = ({
     'dreamtd-menu-item-actived': context.index === index
   })
   const handleClick = () => {
-    if (context.onSelect && !disabled) {
+    if (context.onSelect && !disabled && (typeof index === 'string')) {
       context.onSelect(index)
     }
   }
@@ -39,5 +39,7 @@ const MenuItem: React.FC<IMenuItemProps> = ({
     <li className={classes} style={style} onClick={handleClick}>{children}</li>
   )
 }
+
+MenuItem.displayName = 'MenuItem'
 
 export default MenuItem

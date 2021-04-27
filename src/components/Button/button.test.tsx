@@ -3,15 +3,14 @@
  * @Author: Pokkio
  * @Date: 2021-04-19 22:20:38
  * @LastEditors: Pokkio
- * @LastEditTime: 2021-04-21 23:28:39
+ * @LastEditTime: 2021-04-24 19:07:20
  */
-import { render } from '@testing-library/react'
+import { render, fireEvent } from '@testing-library/react'
 
 import Button, { ButtonProps } from './button'
 
 const testProps: ButtonProps = {
   className: 'test',
-  classPrefix: 'test',
   size: 'lg',
   btnType: 'primary'
 }
@@ -34,7 +33,7 @@ describe('test Button component', () => {
     const wrapper = render(<Button {...testProps}>primary and lg button</Button>)
     const element = wrapper.getByText('primary and lg button')
     expect(element).toBeInTheDocument()
-    expect(element).toHaveClass('test-btn-primary test-btn-lg test')
+    expect(element).toHaveClass('dreamtd-btn-primary dreamtd-btn-lg test')
   })
 
   it('should render a link when btnType equals link and href is provided', () => {

@@ -3,27 +3,26 @@
  * @Author: Pokkio
  * @Date: 2021-04-12 22:28:15
  * @LastEditors: Pokkio
- * @LastEditTime: 2021-04-21 23:14:36
+ * @LastEditTime: 2021-04-26 22:18:00
  */
-import Button from './components/Button/button'
-import Menu from './components/Menu/menu'
-import MenuItem from './components/Menu/menuItem'
+// import Menu from './components/Menu/menu'
+// import SubMenu from './components/Menu/subMenu'
+// import MenuItem from './components/Menu/menuItem'
+import Menu from './components/Menu'
 
 function App() {
   return (
     <div className='App'>
-      <Menu mode='vertical' defaultIndex={1}>
-        <MenuItem index={0}>导航1</MenuItem>
-        <MenuItem index={1}>导航2</MenuItem>
-        <MenuItem index={2}>导航3</MenuItem>
+      <Menu>
+        <Menu.Item>导航1</Menu.Item>
+        <Menu.Item>导航2</Menu.Item>
+        <Menu.Item>导航3</Menu.Item>
+        <Menu.SubMenu title='下拉导航'>
+          <Menu.Item>导航2</Menu.Item>
+          <Menu.Item>导航3</Menu.Item>
+        </Menu.SubMenu>
+        <Menu.Item>导航6</Menu.Item>
       </Menu>
-      <Button>Default</Button>
-      <Button disabled>Disabled</Button>
-      <Button btnType='primary' size='lg'>Large Primary</Button>
-      <Button btnType='primary' size='sm'>Small primary</Button>
-      <Button btnType='danger' size='sm'>Small danger</Button>
-      <Button btnType='link' href='http://www.baidu.com'>Link</Button>
-      <Button btnType='link' href='http://www.baidu.com' disabled>Link</Button>
     </div>
   )
 }

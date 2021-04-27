@@ -3,16 +3,19 @@
  * @Author: Pokkio
  * @Date: 2021-04-20 21:16:28
  * @LastEditors: Pokkio
- * @LastEditTime: 2021-04-21 23:07:58
+ * @LastEditTime: 2021-04-26 22:17:45
  */
-import React, { useState, createContext } from 'react'
+import React, { useState, createContext, FunctionComponentElement } from 'react'
 import classnames from 'classnames'
 
+import { IMenuItemProps } from './menuItem'
+
 type MenuMode = 'horizontal' | 'vertical'
-type SelectCallback = (selectIndex: number) => void
+type SelectCallback = (selectIndex: string) => void
 
 export interface IMenuProps {
-  defaultIndex?: number
+  defaultIndex?: string
+  defaultOpenSubMenus?: string[]
   className?: string
   classPrefix?: string
   mode?: MenuMode
@@ -21,47 +24,64 @@ export interface IMenuProps {
 }
 
 interface IMenuContext {
-  index: number
+  index: string
+  mode?: MenuMode
+  defaultOpenSubMenus?: string[]
   onSelect?: SelectCallback
 }
 
-export const MenuContext = createContext<IMenuContext>({ index: 0 })
+export const MenuContext = createContext<IMenuContext>({ index: '0' })
 
-const Menu: React.FC<IMenuProps> = ({
+const InternalMenu: React.FC<IMenuProps> = ({
   defaultIndex,
+  defaultOpenSubMenus,
   className,
   mode,
   style,
   onSelect,
   children
 }) => {
-  const [currentActive, setActive] = useState<number>(defaultIndex || 0)
+  const [currentActive, setActive] = useState<string>(defaultIndex || '0')
   const classess = classnames('dreamtd-menu', className, {
     'dreamtd-menu-horizontal': mode === 'horizontal',
     'dreamtd-menu-vertical': mode === 'vertical',
   })
-  const handleClickMenuItem = (index: number) => {
+  
+  const handleClickMenuItem = (index: string) => {
     setActive(index)
     onSelect && onSelect(index)
   }
   
   const menuItemContext: IMenuContext = {
     index: currentActive,
-    onSelect: handleClickMenuItem
+    mode,
+    defaultOpenSubMenus,
+    onSelect: handleClickMenuItem,
+  }
+
+  const renderChildren = () => {
+    return React.Children.map(children, (child, index) => {
+      const childElement = child as FunctionComponentElement<IMenuItemProps>
+      const { displayName } = childElement.type
+      if (displayName === 'MenuItem' || displayName === 'SubMenu') {
+        return React.cloneElement(childElement, { index: index.toString() })
+      }
+    })
   }
 
   return (
-    <ul className={classess} style={style}>
+    <ul className={classess} style={style} data-testid='test-menu'>
       <MenuContext.Provider value={menuItemContext}>
-        {children}
+        {renderChildren()}
       </MenuContext.Provider>
     </ul>
   )
 }
 
-Menu.defaultProps = {
-  defaultIndex: 0,
+InternalMenu.defaultProps = {
+  defaultIndex: '0',
+  defaultOpenSubMenus: [],
   mode: 'horizontal'
 }
 
-export default Menu
+export default InternalMenu

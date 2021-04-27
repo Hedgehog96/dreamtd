@@ -31,6 +31,72 @@
       border-bottom: $menu-item-active-border-width solid $menu-item-active-color;
     }
   }
+
+  .dreamtd-menu-submenu {
+    position: relative;
+    border-bottom: $menu-item-active-border-width solid transparent;
+
+    &:hover {
+      color: $menu-item-active-color;
+      border-bottom: $menu-item-active-border-width solid $menu-item-active-color;
+    }
+
+    .dreamtd-submenu-title {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      padding: $menu-item-padding-y $menu-item-padding-x;
+      transition: $menu-transition;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    .dreamtd-submenu-list {
+      display: none;
+      list-style:none;
+      padding-left: 0;
+      white-space: nowrap;
+  
+      .dreamtd-menu-item {
+        padding: $menu-item-padding-y $menu-item-padding-x;
+        cursor: pointer;
+        color: $body-color;
+        text-align: center;
+        transition: $menu-transition;
+  
+        &.is-active, &:hover {
+          color: $menu-item-active-color !important;
+          border: 0;
+        }
+      }
+    }
+
+    .dreamtd-submenu-list-opened {
+      display: block;
+    }
+  }
+}
+
+.dreamtd-menu-horizontal {
+  >.dreamtd-menu-item {
+    border-bottom: $menu-item-active-border-width solid transparent;
+  }
+
+  .dreamtd-submenu-list {
+    position: absolute;
+    background: $white;
+    z-index: 100;
+    top: calc(100% + 8px);
+    left: 0;
+    border: $menu-border-width solid $menu-border-color;
+    box-shadow: $submenu-box-shadow;
+
+    .dreamtd-menu-item {
+      border-bottom: 0;
+    }
+  }
 }
 
 .dreamtd-menu-vertical {
@@ -38,6 +104,7 @@
   border-bottom: 0;
   border-right: $menu-border-width solid $menu-border-color;
 
+  .dreamtd-menu-submenu,
   .dreamtd-menu-item {
     border-left: $menu-item-active-border-width solid transparent;
 
@@ -45,10 +112,22 @@
       background-color: lighten($menu-item-active-color, 45%);
     }
 
-    &.dreamtd-menu-item-actived, &:hover {
+    &.dreamtd-menu-item-actived,
+    &:hover {
       color: $menu-item-active-color;
       border-left: $menu-item-active-border-width solid $menu-item-active-color;
       border-bottom: 0;
+    }
+  }
+
+  .dreamtd-menu-submenu {
+    &:hover {
+      border-bottom: $menu-item-active-border-width solid transparent !important;
+    }
+
+    .dreamtd-menu-item-actived,
+    .dreamtd-menu-item:hover {
+      border-left: $menu-item-active-border-width solid transparent !important;
     }
   }
 }
