@@ -3,7 +3,7 @@
  * @Author: Pokkio
  * @Date: 2021-04-20 21:16:28
  * @LastEditors: Pokkio
- * @LastEditTime: 2021-04-26 22:17:45
+ * @LastEditTime: 2021-05-05 23:08:02
  */
 import React, { useState, createContext, FunctionComponentElement } from 'react'
 import classnames from 'classnames'
@@ -17,7 +17,6 @@ export interface IMenuProps {
   defaultIndex?: string
   defaultOpenSubMenus?: string[]
   className?: string
-  classPrefix?: string
   mode?: MenuMode
   style?: React.CSSProperties
   onSelect?: SelectCallback

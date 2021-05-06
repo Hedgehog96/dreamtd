@@ -1,0 +1,34 @@
+.dreamtd-tabs-menu {
+  display: flex;
+  align-items: center;
+
+  .dreamtd-tab-pane {
+    cursor: pointer;
+    padding: 8px;
+    transition: $menu-transition;
+    border-bottom: $menu-border-width solid transparent;
+
+    &.dreamtd-tab-pane-disabled {
+      color: $menu-item-disabled-color;
+      pointer-events: none;
+      cursor: default;
+    }
+
+    &.dreamtd-tab-pane-actived {
+      background-color: lighten($menu-item-active-color, 45%);
+    }
+
+    &.dreamtd-tab-pane-actived, &:hover {
+      color: $menu-item-active-color;
+      border-bottom: $menu-border-width solid $menu-item-active-color;
+    }
+  }
+}
+
+.dreamtd-tabs-menu-horizontal {
+  border-bottom: 1px solid #f0f0f0;
+
+  .dreamtd-tab-pane:not(:first-child){
+    margin-left: 10px;
+  }
+}

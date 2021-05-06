@@ -3,7 +3,7 @@
  * @Author: Pokkio
  * @Date: 2021-04-21 23:04:04
  * @LastEditors: Pokkio
- * @LastEditTime: 2021-04-24 19:19:17
+ * @LastEditTime: 2021-05-06 21:17:57
  */
 import { render, RenderResult, fireEvent, cleanup } from '@testing-library/react'
 
@@ -11,21 +11,21 @@ import Menu, { IMenuProps } from './menu'
 import MenuItem from './menuItem'
 
 const testProps: IMenuProps = {
-  defaultIndex: 0,
+  defaultIndex: '0',
   className: 'test',
   onSelect: jest.fn()
 }
 
 const testVerticalProps: IMenuProps = {
-  defaultIndex: 0,
+  defaultIndex: '0',
   mode: 'vertical'
 }
 
 const testMenu = (props: IMenuProps) => (
   <Menu {...props}>
-    <MenuItem index={0}>active</MenuItem>
-    <MenuItem index={1} disabled>disabled</MenuItem>
-    <MenuItem index={2}>test</MenuItem>
+    <MenuItem index='0'>active</MenuItem>
+    <MenuItem index='1' disabled>disabled</MenuItem>
+    <MenuItem index='2'>test</MenuItem>
   </Menu>
 )
 
