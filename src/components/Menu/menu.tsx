@@ -3,22 +3,22 @@
  * @Author: Pokkio
  * @Date: 2021-04-20 21:16:28
  * @LastEditors: Pokkio
- * @LastEditTime: 2021-05-05 23:08:02
+ * @LastEditTime: 2021-05-23 18:00:47
  */
-import React, { useState, createContext, FunctionComponentElement } from 'react'
+import React, { FC, useState, createContext, FunctionComponentElement, CSSProperties } from 'react'
 import classnames from 'classnames'
 
-import { IMenuItemProps } from './menuItem'
+import { MenuItemProps } from './menuItem'
 
 type MenuMode = 'horizontal' | 'vertical'
 type SelectCallback = (selectIndex: string) => void
 
-export interface IMenuProps {
+export interface MenuProps {
   defaultIndex?: string
   defaultOpenSubMenus?: string[]
   className?: string
   mode?: MenuMode
-  style?: React.CSSProperties
+  style?: CSSProperties
   onSelect?: SelectCallback
 }
 
@@ -31,7 +31,7 @@ interface IMenuContext {
 
 export const MenuContext = createContext<IMenuContext>({ index: '0' })
 
-const InternalMenu: React.FC<IMenuProps> = ({
+const InternalMenu: FC<MenuProps> = ({
   defaultIndex,
   defaultOpenSubMenus,
   className,
@@ -60,7 +60,7 @@ const InternalMenu: React.FC<IMenuProps> = ({
 
   const renderChildren = () => {
     return React.Children.map(children, (child, index) => {
-      const childElement = child as FunctionComponentElement<IMenuItemProps>
+      const childElement = child as FunctionComponentElement<MenuItemProps>
       const { displayName } = childElement.type
       if (displayName === 'MenuItem' || displayName === 'SubMenu') {
         return React.cloneElement(childElement, { index: index.toString() })

@@ -50,6 +50,14 @@
 
       &:hover {
         cursor: pointer;
+        .arrow-icon {
+          transform: rotate(180deg);
+        }
+      }
+
+      .arrow-icon {
+        transition: transform .25s ease-in-out;
+        margin-left: 3px;
       }
     }
 
@@ -128,6 +136,18 @@
     .dreamtd-menu-item-actived,
     .dreamtd-menu-item:hover {
       border-left: $menu-item-active-border-width solid transparent !important;
+    }
+  }
+
+  .is-vertical {
+    .arrow-icon {
+      transform: rotate(0deg) !important;
+    }
+  }
+
+  .is-vertical.is-opened .dreamtd-submenu-title {
+    .arrow-icon {
+      transform: rotate(180deg) !important;
     }
   }
 }

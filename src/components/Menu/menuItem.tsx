@@ -3,21 +3,21 @@
  * @Author: Pokkio
  * @Date: 2021-04-20 21:31:23
  * @LastEditors: Pokkio
- * @LastEditTime: 2021-04-26 21:18:35
+ * @LastEditTime: 2021-05-23 18:01:12
  */
-import React, { useContext } from 'react'
+import React, { FC, useContext, CSSProperties } from 'react'
 import classnames from 'classnames'
 
 import { MenuContext } from './menu'
 
-export interface IMenuItemProps {
+export interface MenuItemProps {
   className?: string
   index?: string
   disabled?: boolean
-  style?: React.CSSProperties
+  style?: CSSProperties
 }
 
-const MenuItem: React.FC<IMenuItemProps> = ({
+const MenuItem: FC<MenuItemProps> = ({
   className,
   index,
   disabled,

@@ -3,22 +3,22 @@
  * @Author: Pokkio
  * @Date: 2021-05-05 22:43:09
  * @LastEditors: Pokkio
- * @LastEditTime: 2021-05-06 20:40:01
+ * @LastEditTime: 2021-05-23 18:02:38
  */
-import React, { useContext } from 'react'
+import React, { FC, useContext, CSSProperties } from 'react'
 import classnames from 'classnames'
 
 import { TabsContext } from './tabs'
 
-export interface ITabPaneProps {
+export interface TabPaneProps {
   index?: number
   title: string
   className?: string
   disabled?: boolean
-  style?: React.CSSProperties
+  style?: CSSProperties
 }
 
-const TabPane: React.FC<ITabPaneProps> = ({
+const TabPane: FC<TabPaneProps> = ({
   index,
   title,
   className,

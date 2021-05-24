@@ -3,12 +3,12 @@
  * @Author: Pokkio
  * @Date: 2021-05-05 22:37:36
  * @LastEditors: Pokkio
- * @LastEditTime: 2021-05-06 21:41:37
+ * @LastEditTime: 2021-05-24 21:19:33
  */
-import React, { useState, createContext, FunctionComponentElement } from 'react'
+import React, { FC, useState, createContext, FunctionComponentElement, CSSProperties } from 'react'
 import classnames from 'classnames'
 
-import { ITabPaneProps} from './tabPane'
+import { TabPaneProps } from './tabPane'
 
 type TabsMode = 'horizontal' | 'vertical'
 type SelectCallback = (selectIndex: number) => void
@@ -17,7 +17,7 @@ export interface TabsProps {
   defaultIndex?: number
   className?: string
   mode?: TabsMode
-  style?: React.CSSProperties
+  style?: CSSProperties
   onSelect?: SelectCallback
 }
 
@@ -28,7 +28,7 @@ interface ITabsContext {
 
 export const TabsContext = createContext<ITabsContext>({ index: 0 })
 
-const Tabs: React.FC<TabsProps> = ({
+const Tabs: FC<TabsProps> = ({
   defaultIndex,
   className,
   mode,
@@ -54,7 +54,7 @@ const Tabs: React.FC<TabsProps> = ({
 
   const renderChildren = () => {
     return React.Children.map(children, (child, index) => {
-      const childElement = child as FunctionComponentElement<ITabPaneProps>
+      const childElement = child as FunctionComponentElement<TabPaneProps>
       const { displayName } = childElement.type
       if (displayName === 'TabPane') {
         return React.cloneElement(childElement, { index })

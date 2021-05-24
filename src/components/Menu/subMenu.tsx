@@ -3,36 +3,39 @@
  * @Author: Pokkio
  * @Date: 2021-04-24 20:44:49
  * @LastEditors: Pokkio
- * @LastEditTime: 2021-04-26 21:01:25
+ * @LastEditTime: 2021-05-23 18:02:13
  */
-import React, { useState, useContext } from 'react'
+import React, { FC, useState, useContext, MouseEvent, Children, FunctionComponentElement } from 'react'
 import classnames from 'classnames'
 
 import { MenuContext } from './menu'
-import { IMenuItemProps } from './menuItem'
+import { MenuItemProps } from './menuItem'
+import Icon from '../Icon'
 
-export interface ISubMenuProps {
+export interface SubMenuProps {
   index?: string
   title: string
   className?: string
 }
 
-const SubMenu: React.FC<ISubMenuProps> = ({ index, title, className, children }) => {
+const SubMenu: FC<SubMenuProps> = ({ index, title, className, children }) => {
   const context = useContext(MenuContext)
   const openedSubMenus = context.defaultOpenSubMenus as Array<string>
   const isOpened = (index && context.mode === 'vertical') ? openedSubMenus.includes(index) : false
   const [subMenuOpen, setSubMenuOpen] = useState(isOpened)
   const classes = classnames('dreamtd-menu-submenu', className, {
-    'dreamtd-submenu-item-actived': context.index === index
+    'dreamtd-submenu-item-actived': context.index === index,
+    'is-opened': subMenuOpen,
+    'is-vertical': context.mode === 'vertical'
   })
 
-  const handleSubMenuOpen = (e: React.MouseEvent) => {
+  const handleSubMenuOpen = (e: MouseEvent) => {
     e.preventDefault()
     setSubMenuOpen(!subMenuOpen)
   }
 
   let timer: NodeJS.Timeout
-  const handleMouse = (e: React.MouseEvent, toggle: boolean) => {
+  const handleMouse = (e: MouseEvent, toggle: boolean) => {
     clearTimeout(timer)
     e.preventDefault()
     timer = setTimeout(() => {
@@ -45,8 +48,8 @@ const SubMenu: React.FC<ISubMenuProps> = ({ index, title, className, children })
     : {}
   const mouseEvents = context.mode === 'horizontal'
     ? {
-      onMouseEnter: (e: React.MouseEvent) => handleMouse(e, true),
-      onMouseLeave: (e: React.MouseEvent) => handleMouse(e, false)
+      onMouseEnter: (e: MouseEvent) => handleMouse(e, true),
+      onMouseLeave: (e: MouseEvent) => handleMouse(e, false)
     }
     : {}
 
@@ -55,8 +58,8 @@ const SubMenu: React.FC<ISubMenuProps> = ({ index, title, className, children })
       'dreamtd-submenu-list-opened': subMenuOpen
     })
 
-    const childrenComponent = React.Children.map(children, (child, i) => {
-      const childElement = child as React.FunctionComponentElement<IMenuItemProps>
+    const childrenComponent = Children.map(children, (child, i) => {
+      const childElement = child as FunctionComponentElement<MenuItemProps>
       const { displayName } = childElement.type
       if (displayName === 'MenuItem') {
         return React.cloneElement(childElement, { index: `${index}-${i}` })
@@ -70,7 +73,10 @@ const SubMenu: React.FC<ISubMenuProps> = ({ index, title, className, children })
 
   return (
     <li key={index} className={classes} {...mouseEvents}>
-      <div className='dreamtd-submenu-title' {...clickEvents}>{title}</div>
+      <div className='dreamtd-submenu-title' {...clickEvents}>
+        {title}
+        <Icon icon="angle-down" className="arrow-icon" theme='primary' />
+      </div>
       {renderChildren()}
     </li>
   )

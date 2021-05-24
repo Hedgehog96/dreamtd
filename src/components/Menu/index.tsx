@@ -3,15 +3,15 @@
  * @Author: Pokkio
  * @Date: 2021-04-26 22:05:56
  * @LastEditors: Pokkio
- * @LastEditTime: 2021-04-26 22:16:48
+ * @LastEditTime: 2021-05-19 23:22:07
  */
 import React from 'react'
 
-import InternalMenu, { IMenuProps } from './menu'
-import SubMenu, { ISubMenuProps } from './subMenu'
-import MenuItem, { IMenuItemProps } from './menuItem'
+import InternalMenu, { MenuProps } from './menu'
+import SubMenu, { SubMenuProps } from './subMenu'
+import MenuItem, { MenuItemProps } from './menuItem'
 
-class Menu extends React.Component<IMenuProps, {}> {
+class Menu extends React.Component<MenuProps, {}> {
   static Item = MenuItem
 
   static SubMenu = SubMenu
@@ -23,5 +23,5 @@ class Menu extends React.Component<IMenuProps, {}> {
   }
 }
 
-export type { IMenuProps, ISubMenuProps, IMenuItemProps }
+export type { MenuProps, SubMenuProps, MenuItemProps }
 export default Menu

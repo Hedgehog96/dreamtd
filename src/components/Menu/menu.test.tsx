@@ -3,25 +3,25 @@
  * @Author: Pokkio
  * @Date: 2021-04-21 23:04:04
  * @LastEditors: Pokkio
- * @LastEditTime: 2021-05-06 21:17:57
+ * @LastEditTime: 2021-05-24 20:57:33
  */
 import { render, RenderResult, fireEvent, cleanup } from '@testing-library/react'
 
-import Menu, { IMenuProps } from './menu'
+import Menu, { MenuProps } from './menu'
 import MenuItem from './menuItem'
 
-const testProps: IMenuProps = {
+const testProps: MenuProps = {
   defaultIndex: '0',
   className: 'test',
   onSelect: jest.fn()
 }
 
-const testVerticalProps: IMenuProps = {
+const testVerticalProps: MenuProps = {
   defaultIndex: '0',
   mode: 'vertical'
 }
 
-const testMenu = (props: IMenuProps) => (
+const testMenu = (props: MenuProps) => (
   <Menu {...props}>
     <MenuItem index='0'>active</MenuItem>
     <MenuItem index='1' disabled>disabled</MenuItem>
@@ -52,10 +52,10 @@ describe('test Menu and MenuItem component', () => {
     fireEvent.click(finalItem)
     expect(finalItem).toHaveClass('dreamtd-menu-item-actived')
     expect(activedElement).not.toHaveClass('dreamtd-menu-item-actived')
-    expect(testProps.onSelect).toHaveBeenCalledWith(2)
+    expect(testProps.onSelect).toHaveBeenCalledWith('2')
     fireEvent.click(disabledElemnt)
     expect(disabledElemnt).not.toHaveClass('dreamtd-menu-item-actived')
-    expect(testProps.onSelect).not.toHaveBeenCalledWith(1)
+    expect(testProps.onSelect).not.toHaveBeenCalledWith('1')
   })
 
   it('should render vertical mode when mode is set to vertical', () => {

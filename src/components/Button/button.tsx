@@ -3,9 +3,9 @@
  * @Author: Pokkio
  * @Date: 2021-04-14 22:55:11
  * @LastEditors: Pokkio
- * @LastEditTime: 2021-04-21 21:43:58
+ * @LastEditTime: 2021-05-23 18:00:07
  */
-import React from 'react'
+import React, { FC, ButtonHTMLAttributes, AnchorHTMLAttributes } from 'react'
 import classnames from 'classnames'
 
 export type ButtonSize = 'lg' | 'sm'
@@ -19,11 +19,11 @@ interface BaseButtonProps {
   btnType?: ButtonType
   href?: string
 }
-type NativeButtonProps = React.ButtonHTMLAttributes<HTMLElement> & BaseButtonProps
-type AnchorButtonProps = React.AnchorHTMLAttributes<HTMLElement> & BaseButtonProps
+type NativeButtonProps = ButtonHTMLAttributes<HTMLElement> & BaseButtonProps
+type AnchorButtonProps = AnchorHTMLAttributes<HTMLElement> & BaseButtonProps
 export type ButtonProps = Partial<NativeButtonProps & AnchorButtonProps> // 使原生属性为可选
 
-const Button: React.FC<ButtonProps> = ({
+const Button: FC<ButtonProps> = ({
   className,
   disabled,
   size,

@@ -3,32 +3,27 @@
  * @Author: Pokkio
  * @Date: 2021-04-12 22:28:15
  * @LastEditors: Pokkio
- * @LastEditTime: 2021-05-06 21:46:27
+ * @LastEditTime: 2021-05-23 17:57:08
  */
-// import Menu from './components/Menu/menu'
-// import SubMenu from './components/Menu/subMenu'
-// import MenuItem from './components/Menu/menuItem'
-// import Menu from './components/Menu'
-import Tabs, { TabPane } from './components/Tabs'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
 
+import Menu from './components/Menu'
+import Input from './components/Input'
+
+library.add(fas)
 
 function App() {
   return (
     <div className='App'>
-      <Tabs>
-        <TabPane title='标签1' />
-        <TabPane title='标签2' />
-        <TabPane title='标签3' disabled />
-      </Tabs>
-      {/* <Menu>
-        <Menu.Item>导航1</Menu.Item>
-        <Menu.Item>导航2</Menu.Item>
-        <Menu.Item>导航3</Menu.Item>
-        <Menu.SubMenu title='下拉导航'>
-          <Menu.Item>导航2</Menu.Item>
-          <Menu.Item>导航3</Menu.Item>
+      <Input size='sm' prepend='https://' append='test' />
+      {/* <Menu mode='vertical'>
+        <Menu.Item>111</Menu.Item>
+        <Menu.Item>222</Menu.Item>
+        <Menu.SubMenu title='333'>
+          <Menu.Item>444</Menu.Item>
+          <Menu.Item>555</Menu.Item>
         </Menu.SubMenu>
-        <Menu.Item>导航6</Menu.Item>
       </Menu> */}
     </div>
   )
