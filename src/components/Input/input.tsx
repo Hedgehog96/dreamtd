@@ -1,11 +1,11 @@
 /*
  * @Description: 输入框组件
- * @Author: Pokkio
+ * @Author: Bugmakerrrr
  * @Date: 2021-05-19 23:20:08
- * @LastEditors: Pokkio
- * @LastEditTime: 2021-05-24 20:42:33
+ * @LastEditors: Bugmakerrrr
+ * @LastEditTime: 2021-11-09 11:14:40
  */
-import React, { FC, ReactElement, InputHTMLAttributes, ChangeEvent } from 'react'
+import { FC, ReactElement, InputHTMLAttributes, ChangeEvent } from 'react'
 import classnames from 'classnames'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 
@@ -13,14 +13,15 @@ import Icon from '../Icon'
 
 type InputSize = 'lg' | 'sm'
 
+// Omit 忽略原生input元素size属性
 export interface InputProps extends Omit<InputHTMLAttributes<HTMLElement>, 'size'> {
   className?: string
   disabled?: boolean
   size?: InputSize
   icon?: IconProp
-  /**添加前缀 用于配置一些固定组合 */
+  // 添加前缀 用于配置一些固定组合
   prepend?: string | ReactElement
-  /**添加前缀 用于配置一些固定组合 */
+  // 添加前缀 用于配置一些固定组合
   append?: string | ReactElement
   onChange? : (e: ChangeEvent<HTMLInputElement>) => void
 }

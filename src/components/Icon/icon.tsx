@@ -1,11 +1,11 @@
 /*
  * @Description: 图标组件
- * @Author: Pokkio
+ * @Author: Bugmakerrrr
  * @Date: 2021-05-12 21:23:37
- * @LastEditors: Pokkio
- * @LastEditTime: 2021-05-23 18:00:24
+ * @LastEditors: Bugmakerrrr
+ * @LastEditTime: 2021-11-09 11:00:17
  */
-import React, { FC } from 'react'
+import { FC } from 'react'
 import classnames from 'classnames'
 import { FontAwesomeIcon, FontAwesomeIconProps } from '@fortawesome/react-fontawesome'
 

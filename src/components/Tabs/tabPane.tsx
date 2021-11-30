@@ -1,11 +1,11 @@
 /*
  * @Description: 标签页子页组件
- * @Author: Pokkio
+ * @Author: Bugmakerrrr
  * @Date: 2021-05-05 22:43:09
- * @LastEditors: Pokkio
- * @LastEditTime: 2021-05-23 18:02:38
+ * @LastEditors: Bugmakerrrr
+ * @LastEditTime: 2021-11-09 11:02:05
  */
-import React, { FC, useContext, CSSProperties } from 'react'
+import { FC, useContext, CSSProperties } from 'react'
 import classnames from 'classnames'
 
 import { TabsContext } from './tabs'

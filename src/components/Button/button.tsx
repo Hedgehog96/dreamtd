@@ -1,11 +1,11 @@
 /*
  * @Description: 按钮组件
- * @Author: Pokkio
+ * @Author: Bugmakerrrr
  * @Date: 2021-04-14 22:55:11
- * @LastEditors: Pokkio
- * @LastEditTime: 2021-05-23 18:00:07
+ * @LastEditors: Bugmakerrrr
+ * @LastEditTime: 2021-11-09 11:00:08
  */
-import React, { FC, ButtonHTMLAttributes, AnchorHTMLAttributes } from 'react'
+import { FC, ButtonHTMLAttributes, AnchorHTMLAttributes } from 'react'
 import classnames from 'classnames'
 
 export type ButtonSize = 'lg' | 'sm'

@@ -1,9 +1,9 @@
 /*
  * @Description: 
- * @Author: Pokkio
+ * @Author: Bugmakerrrr
  * @Date: 2021-05-05 22:44:09
- * @LastEditors: Pokkio
- * @LastEditTime: 2021-05-24 21:20:04
+ * @LastEditors: Bugmakerrrr
+ * @LastEditTime: 2021-11-09 11:01:58
  */
 import Tabs, { TabsProps } from './tabs'
 import TabPane, { TabPaneProps } from './tabPane'
